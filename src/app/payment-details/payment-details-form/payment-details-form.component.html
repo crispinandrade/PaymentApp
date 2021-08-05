@@ -1,0 +1,73 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+  <input
+    type="hidden"
+    name="paymentDetailId"
+    [value]="paymentDetailService.formData.paymentDetailId"
+  />
+  <div class="form-group">
+    <label>Card owner name</label>
+    <input
+      class="form-control form-control-lg"
+      placeholder="Full Name"
+      name="cardOwnerName"
+      #cardOwnerName="ngModel"
+      [(ngModel)]="paymentDetailService.formData.cardOwnerName"
+      required
+      [class.invalid]="cardOwnerName.invalid && cardOwnerName.dirty"
+    />
+  </div>
+  <div class="form-group">
+    <label>Card number</label>
+    <input
+      class="form-control form-control-lg"
+      placeholder="16 Digit Card Number"
+      minlength="16"
+      maxlength="16"
+      name="cardNumber"
+      #cardNumber="ngModel"
+      [(ngModel)]="paymentDetailService.formData.cardNumber"
+      required
+      [class.invalid]="cardNumber.invalid && cardNumber.dirty"
+    />
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Expiration Date</label>
+      <input
+        class="form-control form-control-lg"
+        placeholder="DD/MM/YY"
+        minlength="5"
+        maxlength="5"
+        name="expirationDate"
+        #expirationDate="ngModel"
+        [(ngModel)]="paymentDetailService.formData.expirationDate"
+        required
+        [class.invalid]="expirationDate.invalid && expirationDate.dirty"
+      />
+    </div>
+    <div class="form-group col-md-6">
+      <label>Security Code</label>
+      <input
+        type="password"
+        class="form-control form-control-lg"
+        placeholder="3 Digit Code"
+        minlength="3"
+        maxlength="3"
+        name="securityCode"
+        #securityCode="ngModel"
+        [(ngModel)]="paymentDetailService.formData.securityCode"
+        required
+        [class.invalid]="securityCode.invalid && securityCode.dirty"
+      />
+    </div>
+  </div>
+  <div class="form-group">
+    <button
+      class="btn btn-info btn-lg btn-block"
+      type="submit"
+      [disabled]="form.invalid"
+    >
+      Submit
+    </button>
+  </div>
+</form>
