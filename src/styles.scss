@@ -2,3 +2,11 @@
 input.invalid {
   border-color: red;
 }
+
+i {
+  cursor: pointer;
+}
+tr:hover {
+  cursor: pointer;
+  background-color: rgb(23, 162, 184, 0.15);
+}

@@ -7,6 +7,28 @@
     <app-payment-details-form> </app-payment-details-form>
   </div>
   <div class="col-md-6">
-    <span>List of Payment details</span>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>Card owner</th>
+          <th>Card Number</th>
+          <th>Expiration Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let pd of paymentDetailService.list"
+          (click)="populateForm(pd)"
+        >
+          <td>{{ pd.cardOwnerName }}</td>
+          <td>{{ pd.cardNumber }}</td>
+          <td>{{ pd.expirationDate }}</td>
+          <td (click)="deleteRecord(pd.paymentDetailId)">
+            <i class="far fa-trash-alt fa-lg text-danger"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
